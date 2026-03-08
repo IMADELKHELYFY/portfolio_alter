@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio – IMAD EL KHELYFY | Data Engineer · Data Analyst · Data Scientist</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a202c;
+    line-height: 1.65;
+    font-size: 13px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: #1e3a5f;
+    color: white;
+    padding: 36px 50px 30px;
+    border-bottom: 4px solid #2d6bc4;
+  }
+  .header-name {
+    font-size: 38px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  .header-title {
+    font-size: 14px;
+    color: #93c5fd;
+    margin-top: 6px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+  .header-subtitle {
+    margin-top: 14px;
+    font-size: 13.5px;
+    color: #cbd5e1;
+    max-width: 680px;
+    line-height: 1.6;
+  }
+  .header-subtitle strong { color: #93c5fd; }
+  .contact-bar {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 6px;
+    padding: 7px 14px;
+    font-size: 12.5px;
+    color: #e2e8f0;
+    text-decoration: none;
+  }
+
+  /* ── MAIN ── */
+  .main { padding: 30px 50px; max-width: 1100px; margin: 0 auto; }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin: 36px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #2d6bc4;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-num {
+    background: #2d6bc4;
+    color: white;
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── SKILLS GRID ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .skill-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #2d6bc4;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .skill-card-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .skill-tag {
+    display: inline-block;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 4px;
+    padding: 3px 9px;
+    font-size: 11.5px;
+    color: #1e40af;
+    margin: 2px 3px 2px 0;
+    font-family: 'Fira Code', monospace;
+  }
+  .skill-tag.teal {
+    background: #f0fdfa;
+    border-color: #99f6e4;
+    color: #0f766e;
+  }
+  .skill-tag.amber {
+    background: #fffbeb;
+    border-color: #fde68a;
+    color: #92400e;
+  }
+  .skill-tag.green {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+    color: #166534;
+  }
+  .skill-tag.purple {
+    background: #faf5ff;
+    border-color: #e9d5ff;
+    color: #6b21a8;
+  }
+
+  /* ── PROJECT CARD ── */
+  .project-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 22px 24px 20px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    page-break-inside: avoid;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2d6bc4, #0ea5e9);
+  }
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .project-num {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    width: 40px; height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .project-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e3a5f;
+    line-height: 1.3;
+  }
+  .project-title a { color: #1e40af; text-decoration: none; }
+  .project-title a:hover { text-decoration: underline; }
+  .project-subtitle {
+    font-size: 12.5px;
+    color: #64748b;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+  .project-desc {
+    font-size: 13px;
+    color: #374151;
+    margin-bottom: 14px;
+    line-height: 1.7;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 14px;
+  }
+  .tag {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 20px;
+    padding: 3px 11px;
+    font-size: 11.5px;
+    color: #1e40af;
+    font-weight: 500;
+  }
+  .tag.teal { background: #f0fdfa; border-color: #99f6e4; color: #0f766e; }
+  .tag.amber { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+  .tag.green { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+  .tag.purple { background: #faf5ff; border-color: #e9d5ff; color: #6b21a8; }
+
+  .pipeline {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 3px solid #0ea5e9;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-family: 'Fira Code', monospace;
+    font-size: 11.5px;
+    color: #475569;
+    margin: 12px 0;
+    white-space: pre-wrap;
+    line-height: 1.9;
+  }
+
+  .features-list { list-style: none; margin: 8px 0; }
+  .features-list li {
+    padding: 3px 0;
+    font-size: 13px;
+    color: #374151;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .features-list li::before {
+    content: '▸';
+    color: #2d6bc4;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 12.5px;
+  }
+  th {
+    background: #1e3a5f;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 9px 13px;
+    text-align: left;
+  }
+  td {
+    padding: 8px 13px;
+    border-bottom: 1px solid #e8eef5;
+    color: #475569;
+    vertical-align: top;
+  }
+  td strong { color: #1e3a5f; }
+  tr:nth-child(even) td { background: #f8fafc; }
+
+  /* ── ROLE GRID ── */
+  .role-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 14px 0;
+  }
+  .role-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-top: 3px solid #2d6bc4;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .role-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin-bottom: 10px;
+  }
+  .role-card-skills { font-size: 12px; color: #64748b; line-height: 1.9; }
+
+  /* ── MINI GRID ── */
+  .mini-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .mini-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 13px 15px;
+  }
+  .mini-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e3a5f;
+    margin-bottom: 4px;
+  }
+  .mini-card-title a { color: #1e40af; text-decoration: none; }
+  .mini-card-desc { font-size: 11.5px; color: #64748b; margin-bottom: 7px; }
+
+  /* ── DISTINCTION LIST ── */
+  .distinction-list { display: flex; flex-direction: column; gap: 8px; margin: 14px 0; }
+  .distinction-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 11px 15px;
+    font-size: 13px;
+    color: #1e3a5f;
+  }
+  .distinction-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 22px 50px;
+    border-top: 1px solid #e2e8f0;
+    color: #94a3b8;
+    font-size: 12px;
+    margin-top: 10px;
+    background: #f8fafc;
+  }
+  .footer strong { color: #1e3a5f; }
+
+  /* ── PRINT OPTIMIZATION ── */
+  @media print {
+    body { background: white; font-size: 12px; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section-num { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .project-card { page-break-inside: avoid; box-shadow: none; }
+    th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .role-card, .skill-card, .distinction-item { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .main { padding: 20px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<div class="header">
+  <div class="header-name">IMAD EL KHELYFY</div>
+  <div class="header-title">Data Engineer &nbsp;·&nbsp; Data Analyst &nbsp;·&nbsp; Data Scientist</div>
+  <p class="header-subtitle">
+    Étudiant passionné par la Data et l'Intelligence Artificielle, à la recherche d'une
+    <strong>alternance</strong> dans le domaine de la Data.
+    Vision full-stack : du pipeline d'ingestion jusqu'à la visualisation finale et la mise en production.
+  </p>
+  <div class="contact-bar">
+    <a href="mailto:imad.khalyfy@gmail.com" class="contact-item">📧 imad.khalyfy@gmail.com</a>
+    <a href="https://github.com/IMADELKHELYFY" class="contact-item">🐙 github.com/IMADELKHELYFY</a>
+    <a href="https://www.linkedin.com/in/imad-el-khelyfy" class="contact-item">💼 LinkedIn · IMAD EL KHELYFY</a>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ══════════ COMPÉTENCES ══════════ -->
+<div class="section-title">
+  <span class="section-num">01</span>
+  Compétences Techniques
+</div>
+
+<div class="skills-grid">
+
+  <div class="skill-card">
+    <div class="skill-card-title">🔥 Big Data & Traitement Distribué</div>
+    <span class="skill-tag">Apache Spark</span>
+    <span class="skill-tag">PySpark</span>
+    <span class="skill-tag">Spark SQL</span>
+    <span class="skill-tag">MLlib</span>
+    <span class="skill-tag">Hadoop</span>
+    <span class="skill-tag">HDFS</span>
+    <span class="skill-tag">MapReduce</span>
+    <span class="skill-tag amber">Lazy Evaluation</span>
+    <span class="skill-tag amber">Broadcasting</span>
+    <span class="skill-tag amber">In-Memory</span>
+  </div>
+
+  <div class="skill-card">
+    <div class="skill-card-title">🗄️ Bases de Données & NoSQL</div>
+    <span class="skill-tag">PostgreSQL</span>
+    <span class="skill-tag">MySQL</span>
+    <span class="skill-tag">SQL Server</span>
+    <span class="skill-tag teal">HBase</span>
+    <span class="skill-tag teal">Cassandra</span>
+    <span class="skill-tag teal">Neo4j (Cypher)</span>
+    <span class="skill-tag green">Apache Hive</span>
+    <span class="skill-tag amber">Étoile / Flocon</span>
+  </div>
+
+  <div class="skill-card">
+    <div class="skill-card-title">☁️ Cloud & Architecture Data</div>
+    <span class="skill-tag teal">Azure Databricks</span>
+    <span class="skill-tag teal">ADLS Gen2</span>
+    <span class="skill-tag green">Data Lakehouse</span>
+    <span class="skill-tag green">Medallion (Bronze/Silver/Gold)</span>
+    <span class="skill-tag">Lambda Architecture</span>
+    <span class="skill-tag">Kappa Architecture</span>
+  </div>
+
+  <div class="skill-card">
+    <div class="skill-card-title">📁 Formats & Stockage Big Data</div>
+    <span class="skill-tag">Apache Parquet</span>
+    <span class="skill-tag teal">Delta Lake</span>
+    <span class="skill-tag amber">Apache Pig (Pig Latin)</span>
+    <span class="skill-tag">JSON / CSV</span>
+    <span class="skill-tag green">ORC</span>
+  </div>
+
+  <div class="skill-card">
+    <div class="skill-card-title">🧠 Data Science & Machine Learning</div>
+    <span class="skill-tag">Scikit-learn</span>
+    <span class="skill-tag">TensorFlow</span>
+    <span class="skill-tag">Keras</span>
+    <span class="skill-tag purple">LangChain</span>
+    <span class="skill-tag purple">RAG / GraphRAG</span>
+    <span class="skill-tag">NLP</span>
+    <span class="skill-tag amber">Gemini AI</span>
+    <span class="skill-tag green">Computer Vision</span>
+  </div>
+
+  <div class="skill-card">
+    <div class="skill-card-title">📊 Analyse & Visualisation</div>
+    <span class="skill-tag">Python</span>
+    <span class="skill-tag">Pandas</span>
+    <span class="skill-tag">NumPy</span>
+    <span class="skill-tag amber">Power BI</span>
+    <span class="skill-tag amber">Excel (avancé)</span>
+    <span class="skill-tag">Matplotlib</span>
+    <span class="skill-tag">Seaborn</span>
+    <span class="skill-tag teal">Streamlit</span>
+    <span class="skill-tag">Plotly</span>
+  </div>
+
+  <div class="skill-card">
+    <div class="skill-card-title">⚙️ Outils & DevOps</div>
+    <span class="skill-tag">Git / GitHub</span>
+    <span class="skill-tag">Docker</span>
+    <span class="skill-tag teal">n8n</span>
+    <span class="skill-tag">Jupyter Notebook</span>
+    <span class="skill-tag amber">Apache Airflow</span>
+    <span class="skill-tag">REST API</span>
+    <span class="skill-tag green">MCP Protocol</span>
+  </div>
+
+  <div class="skill-card">
+    <div class="skill-card-title">💻 Langages & Frameworks</div>
+    <span class="skill-tag">Python</span>
+    <span class="skill-tag">SQL</span>
+    <span class="skill-tag">Java</span>
+    <span class="skill-tag">TypeScript</span>
+    <span class="skill-tag teal">Spring Boot</span>
+    <span class="skill-tag">Flask</span>
+    <span class="skill-tag">React.js / Next.js</span>
+    <span class="skill-tag green">Angular</span>
+  </div>
+
+</div>
+
+<!-- ══════════ PROJETS ══════════ -->
+<div class="section-title">
+  <span class="section-num">02</span>
+  Projets Data & IA
+</div>
+
+<!-- PROJECT 1 -->
+<div class="project-card">
+  <div class="project-header">
+    <div class="project-num">🔍</div>
+    <div style="flex:1">
+      <div class="project-title">
+        <a href="https://github.com/IMADELKHELYFY/GraphRAG">GraphRAG vs Simple RAG</a>
+      </div>
+      <div class="project-subtitle">Comparaison de systèmes de récupération d'information basés sur l'IA</div>
+    </div>
+  </div>
+  <div class="project-tags">
+    <span class="tag">IA Générative</span>
+    <span class="tag teal">Knowledge Graph</span>
+    <span class="tag teal">Neo4j</span>
+    <span class="tag">NLP</span>
+    <span class="tag">Python</span>
+    <span class="tag amber">PageRank</span>
+  </div>
+  <p class="project-desc">
+    Exploration et comparaison de deux architectures RAG : le <strong>Simple RAG</strong> (recherche vectorielle)
+    et le <strong>GraphRAG</strong> qui construit un graphe de connaissances structuré (Neo4j) avec des algorithmes
+    de ranking pour une récupération contextuelle supérieure.
+  </p>
+  <div class="pipeline">Documents → Extraction d'entités → Knowledge Graph (Neo4j)
+                                         ↓
+              Requête → Traversée du graphe (Cypher) → LLM → Réponse contextuelle</div>
+  <table>
+    <tr><th>Critère</th><th>Simple RAG</th><th>GraphRAG</th></tr>
+    <tr><td><strong>Structure</strong></td><td>Vecteurs de chunks</td><td>Réseau de nœuds / arêtes</td></tr>
+    <tr><td><strong>Récupération</strong></td><td>Similarité mathématique</td><td>Traversée de relations</td></tr>
+    <tr><td><strong>Meilleur pour</strong></td><td>Questions directes</td><td>Raisonnement complexe multi-sources</td></tr>
+  </table>
+</div>
+
+<!-- PROJECT 2 -->
+<div class="project-card">
+  <div class="project-header">
+    <div class="project-num">🤖</div>
+    <div style="flex:1">
+      <div class="project-title">
+        <a href="https://github.com/IMADELKHELYFY/EduChatbot">EduChatbot — AI Mentor</a>
+      </div>
+      <div class="project-subtitle">Plateforme pédagogique intelligente pour la Data Science & l'IA</div>
+    </div>
+  </div>
+  <div class="project-tags">
+    <span class="tag amber">Gemini AI</span>
+    <span class="tag">Chatbot</span>
+    <span class="tag teal">Streamlit</span>
+    <span class="tag">Python</span>
+    <span class="tag green">Full-Stack</span>
+  </div>
+  <p class="project-desc">
+    Plateforme d'apprentissage intelligente propulsée par <strong>Google Gemini AI</strong>.
+    Fournit des roadmaps personnalisés pour maîtriser Python, ML et Data Science,
+    avec un chatbot IA pour un support pédagogique en temps réel.
+  </p>
+  <ul class="features-list">
+    <li>Roadmaps interactifs : Python → Data Science → ML → Deep Learning → IA</li>
+    <li>Chatbot pédagogique (Gemini) pour réponses contextuelles en temps réel</li>
+    <li>Hub de ressources curatées (documentation, tutoriels, outils)</li>
+    <li>UI moderne avec design responsive (Streamlit + HTML/CSS)</li>
+  </ul>
+</div>
+
+<!-- PROJECT 3 -->
+<div class="project-card">
+  <div class="project-header">
+    <div class="project-num">🛡️</div>
+    <div style="flex:1">
+      <div class="project-title">
+        <a href="https://github.com/IMADELKHELYFY/money-laundering-detection">GuardianFlow — Détection Blanchiment d'Argent</a>
+      </div>
+      <div class="project-subtitle">Système full-stack de surveillance financière par Machine Learning</div>
+    </div>
+  </div>
+  <div class="project-tags">
+    <span class="tag">Machine Learning</span>
+    <span class="tag amber">Détection d'anomalies</span>
+    <span class="tag">Python · Flask</span>
+    <span class="tag teal">PostgreSQL</span>
+    <span class="tag green">Docker</span>
+    <span class="tag">React.js</span>
+  </div>
+  <p class="project-desc">
+    Système complet de surveillance des transactions financières en temps réel, utilisant le
+    Machine Learning pour détecter les comportements suspects. Architecture full-stack avec
+    dashboard interactif, API REST et base de données PostgreSQL.
+  </p>
+  <div class="pipeline">Transactions en temps réel
+    ↓  Prétraitement (Pandas / NumPy)
+    ↓  Modèles ML (Scikit-learn) : Clustering + Scoring de risque + Analyse comportementale
+    ↓  Dashboard React.js avec alertes + Rapports de conformité réglementaire</div>
+  <table>
+    <tr><th>Couche</th><th>Technologies</th></tr>
+    <tr><td><strong>Frontend</strong></td><td>React.js (Next.js 14), TypeScript, Tailwind CSS, Recharts</td></tr>
+    <tr><td><strong>Backend</strong></td><td>Python, Flask + Flask-RESTful, Scikit-learn, Pandas, NumPy</td></tr>
+    <tr><td><strong>Base de données</strong></td><td>PostgreSQL, SQLAlchemy (ORM)</td></tr>
+    <tr><td><strong>DevOps</strong></td><td>Docker, Jupyter Notebooks</td></tr>
+  </table>
+</div>
+
+<!-- PROJECT 4 -->
+<div class="project-card">
+  <div class="project-header">
+    <div class="project-num">📧</div>
+    <div style="flex:1">
+      <div class="project-title">
+        <a href="https://github.com/IMADELKHELYFY/n8n-event-bot">Intelligent Event Bot — Automatisation Email par IA</a>
+      </div>
+      <div class="project-subtitle">Pipeline automatisé d'email marketing via orchestration de données</div>
+    </div>
+  </div>
+  <div class="project-tags">
+    <span class="tag teal">n8n</span>
+    <span class="tag amber">Gemini AI</span>
+    <span class="tag teal">PostgreSQL</span>
+    <span class="tag green">Automation</span>
+    <span class="tag">SQL</span>
+    <span class="tag">ETL Pipeline</span>
+  </div>
+  <p class="project-desc">
+    Pipeline de données automatisé orchestré par <strong>n8n</strong> : détection d'événements en base
+    → génération de contenu marketing par IA → envoi personnalisé aux abonnés.
+  </p>
+  <div class="pipeline">[Postgres Trigger] → Nouvel événement détecté
+[Google Gemini]    → Génération du contenu marketing IA
+[Postgres Query]   → Récupération abonnés actifs (is_active = TRUE)
+[Merge & Personalize] → Email personnalisé par abonné
+[Gmail API]        → Envoi automatique des invitations</div>
+</div>
+
+<!-- PROJECT 5 -->
+<div class="project-card">
+  <div class="project-header">
+    <div class="project-num">🤝</div>
+    <div style="flex:1">
+      <div class="project-title">
+        <a href="https://github.com/IMADELKHELYFY/Model-Context-Protocol-TP-">MCP Platform — Model Context Protocol</a>
+      </div>
+      <div class="project-subtitle">Architecture multi-composants pour l'intégration LLM avec outils externes</div>
+    </div>
+  </div>
+  <div class="project-tags">
+    <span class="tag green">MCP Protocol</span>
+    <span class="tag">LLM</span>
+    <span class="tag">Spring Boot</span>
+    <span class="tag teal">Angular</span>
+    <span class="tag">Python</span>
+    <span class="tag amber">Ollama</span>
+    <span class="tag">REST API</span>
+  </div>
+  <p class="project-desc">
+    Implémentation complète du <strong>Model Context Protocol (MCP)</strong>, protocole standardisé
+    permettant aux LLMs d'interagir avec des outils et sources de données externes de façon sécurisée.
+    Architecture distribuée 4 composants : Frontend Angular, MCP Client Java, MCP Server Java, MCP Server Python.
+  </p>
+  <div class="pipeline">[Angular 20 Frontend] ←→ [Spring Boot MCP Client]
+                               ↓  [Spring Boot MCP Server]
+                               ↓  [Python MCP Server + Ollama LLM local]</div>
+</div>
+
+<!-- PROJECT 6 -->
+<div class="project-card">
+  <div class="project-header">
+    <div class="project-num">📚</div>
+    <div style="flex:1">
+      <div class="project-title">
+        <a href="https://github.com/IMADELKHELYFY/review_data_ai">Review Data & AI — Guide Data Engineering complet</a>
+      </div>
+      <div class="project-subtitle">Documentation exhaustive de l'écosystème Data Engineering & IA</div>
+    </div>
+  </div>
+  <div class="project-tags">
+    <span class="tag">Data Engineering</span>
+    <span class="tag amber">Big Data</span>
+    <span class="tag teal">Apache Kafka</span>
+    <span class="tag">Spark</span>
+    <span class="tag green">Architecture Lakehouse</span>
+  </div>
+  <p class="project-desc">
+    Guide de révision exhaustif couvrant l'intégralité de l'écosystème Data Engineering, organisé
+    pour la préparation aux entretiens techniques et à la conception de systèmes en entreprise.
+  </p>
+  <table>
+    <tr><th>Catégorie</th><th>Technologies couvertes</th></tr>
+    <tr><td><strong>Big Data & Processing</strong></td><td>Apache Spark, Hadoop, HDFS, MapReduce</td></tr>
+    <tr><td><strong>Streaming & Messaging</strong></td><td>Apache Kafka, Spark Streaming</td></tr>
+    <tr><td><strong>Storage & Formats</strong></td><td>Parquet, Delta Lake, HBase, Cassandra</td></tr>
+    <tr><td><strong>Architecture</strong></td><td>Lambda, Kappa, Data Lakehouse, Medallion (Bronze/Silver/Gold)</td></tr>
+    <tr><td><strong>AI & Graphs</strong></td><td>LangChain, GraphRAG, Neo4j (Cypher)</td></tr>
+  </table>
+</div>
+
+<!-- PROJECT 7 -->
+<div class="project-card">
+  <div class="project-header">
+    <div class="project-num">🤖</div>
+    <div style="flex:1">
+      <div class="project-title">
+        <a href="https://github.com/IMADELKHELYFY/Robot-Navigation-Simulation-with-model-of-Cartwright-and-Collet-">Robot Navigation Simulation</a>
+      </div>
+      <div class="project-subtitle">Simulation de navigation autonome — Modèle Cartwright &amp; Collet</div>
+    </div>
+  </div>
+  <div class="project-tags">
+    <span class="tag">IA &amp; Robotique</span>
+    <span class="tag amber">Simulation</span>
+    <span class="tag">Python</span>
+    <span class="tag">NumPy</span>
+    <span class="tag">Matplotlib</span>
+  </div>
+  <p class="project-desc">
+    Simulation de navigation robotique autonome implémentant le modèle de <strong>Cartwright et Collet</strong>.
+    Le robot navigue vers sa cible via des forces attractives/répulsives et des points de repère intermédiaires (Amers).
+  </p>
+  <ul class="features-list">
+    <li>Force attractive guidant le robot vers la cible</li>
+    <li>Force répulsive pour l'évitement dynamique des obstacles</li>
+    <li>Navigation par landmarks comme points de guidage intermédiaires</li>
+  </ul>
+</div>
+
+<!-- ══════════ AUTRES PROJETS ══════════ -->
+<div class="section-title">
+  <span class="section-num">03</span>
+  Autres Projets Notables
+</div>
+<div class="mini-grid">
+  <div class="mini-card">
+    <div class="mini-card-title">🕸️ <a href="https://github.com/IMADELKHELYFY/knowledge_Graph">Knowledge Graph</a></div>
+    <div class="mini-card-desc">Visualisation interactive de graphes de connaissances</div>
+    <div><span class="skill-tag">HTML/JS</span><span class="skill-tag teal">Neo4j</span></div>
+  </div>
+  <div class="mini-card">
+    <div class="mini-card-title">🚗 <a href="https://github.com/IMADELKHELYFY/ImageClassification">Image Classification</a></div>
+    <div class="mini-card-desc">Classification d'images par Deep Learning (CNN)</div>
+    <div><span class="skill-tag">Python</span><span class="skill-tag amber">TensorFlow</span></div>
+  </div>
+  <div class="mini-card">
+    <div class="mini-card-title">🎯 <a href="https://github.com/IMADELKHELYFY/cars_detection">Cars Detection</a></div>
+    <div class="mini-card-desc">Détection de véhicules par Computer Vision</div>
+    <div><span class="skill-tag">Python</span><span class="skill-tag green">OpenCV</span></div>
+  </div>
+  <div class="mini-card">
+    <div class="mini-card-title">📊 <a href="https://github.com/IMADELKHELYFY/Streamlit">Streamlit Apps</a></div>
+    <div class="mini-card-desc">Applications Data interactives avec Streamlit</div>
+    <div><span class="skill-tag">Python</span><span class="skill-tag teal">Streamlit</span></div>
+  </div>
+  <div class="mini-card">
+    <div class="mini-card-title">🏥 <a href="https://github.com/IMADELKHELYFY/Hopital_Spring_MVC">Hôpital Spring MVC</a></div>
+    <div class="mini-card-desc">Système de gestion hospitalière (MVC)</div>
+    <div><span class="skill-tag">Java</span><span class="skill-tag amber">Spring MVC</span></div>
+  </div>
+  <div class="mini-card">
+    <div class="mini-card-title">🏦 <a href="https://github.com/IMADELKHELYFY/bank-app">Bank App</a></div>
+    <div class="mini-card-desc">Application bancaire avec Spring Boot</div>
+    <div><span class="skill-tag">Java</span><span class="skill-tag green">Spring Boot</span></div>
+  </div>
+</div>
+
+<!-- ══════════ PROFIL & OBJECTIF ══════════ -->
+<div class="section-title">
+  <span class="section-num">04</span>
+  Profil &amp; Objectif d'Alternance
+</div>
+
+<div class="role-grid">
+  <div class="role-card">
+    <div class="role-card-title">🔧 Data Engineer</div>
+    <div class="role-card-skills">
+      Spark · PySpark · Hadoop<br>
+      Kafka · Parquet · Delta Lake<br>
+      Airflow · Azure Databricks<br>
+      Architecture Medallion<br>
+      ETL / ELT Pipelines
+    </div>
+  </div>
+  <div class="role-card">
+    <div class="role-card-title">📊 Data Analyst</div>
+    <div class="role-card-skills">
+      SQL · Power BI · Excel<br>
+      Python · Pandas · NumPy<br>
+      Matplotlib · Seaborn<br>
+      Streamlit · Plotly<br>
+      KPIs &amp; Business Intelligence
+    </div>
+  </div>
+  <div class="role-card">
+    <div class="role-card-title">🧠 Data Scientist / AI</div>
+    <div class="role-card-skills">
+      Scikit-learn · TensorFlow<br>
+      NLP · Computer Vision<br>
+      LLM · RAG · GraphRAG<br>
+      LangChain · Gemini AI<br>
+      MLlib (Spark)
+    </div>
+  </div>
+</div>
+
+<div class="distinction-list">
+  <div class="distinction-item">
+    <span class="distinction-icon">🔗</span>
+    <div><strong>Vision full-stack Data</strong> : du pipeline d'ingestion à la visualisation finale et la mise en production</div>
+  </div>
+  <div class="distinction-item">
+    <span class="distinction-icon">🧠</span>
+    <div><strong>Expertise IA Générative</strong> : LLMs, RAG, GraphRAG, Model Context Protocol (MCP)</div>
+  </div>
+  <div class="distinction-item">
+    <span class="distinction-icon">🏗️</span>
+    <div><strong>Architectures modernes</strong> : Data Lakehouse, Medallion (Bronze/Silver/Gold), Lambda / Kappa</div>
+  </div>
+  <div class="distinction-item">
+    <span class="distinction-icon">🚀</span>
+    <div><strong>Projets end-to-end</strong> : collecte, traitement, modélisation, déploiement et monitoring</div>
+  </div>
+  <div class="distinction-item">
+    <span class="distinction-icon">💡</span>
+    <div><strong>Big Data & Distribué</strong> : PySpark, Spark SQL, MLlib, optimisation In-Memory et Broadcasting</div>
+  </div>
+</div>
+
+</div><!-- /.main -->
+
+<!-- ══════════ FOOTER ══════════ -->
+<div class="footer">
+  <strong>IMAD EL KHELYFY</strong> · Portfolio Data &amp; IA · Mars 2026<br>
+  📧 imad.khalyfy@gmail.com &nbsp;|&nbsp; 🐙 github.com/IMADELKHELYFY
+</div>
+
+</body>
+</html>
